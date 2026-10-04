@@ -21,6 +21,14 @@ pipewire-jack
 wireplumber
 qpwgraph
 
+# --- AMD Hardware Specifics ---
+amd-ucode
+mesa
+lib32-mesa
+libva-mesa-driver
+lib32-libva-mesa-driver
+corectrl
+
 # --- Gaming & Streaming Tools ---
 steam
 lutris
@@ -31,3 +39,33 @@ nvidia-utils
 lib32-vulkan-radeon
 lib32-vulkan-intel
 lib32-nvidia-utils
+
+# --- Standalone Game Support (RPG Maker, WolfRPG, Unity, Visual Novels) ---
+wine-staging
+winetricks
+bottles
+noto-fonts-cjk
+
+# --- Firmware & Missing Core Dependencies ---
+linux-firmware
+vulkan-icd-loader
+lib32-vulkan-icd-loader
+
+# --- Extractors (Required by Lutris/Winetricks) ---
+unzip
+p7zip
+curl
+wget
+
+# --- Gaming Optimizations ---
+gamemode
+lib32-gamemode
+mangohud
+lib32-mangohud
+
+# --- Network Management & Diagnostics ---
+nmap
+wireshark-qt
+aircrack-ng
+tcpdump
+gnu-netcat
