@@ -88,7 +88,7 @@ tcpdump
 openbsd-netcat
 wireguard-tools
 
-# --- Server Hosting, Automation & File Transfer Stack ---
+# --- Server Hosting, Automation, Runtimes & File Transfer Stack ---
 tmux
 screen
 ufw
@@ -106,6 +106,7 @@ lftp
 filezilla
 nodejs
 npm
+jre-openjdk
 
 # --- RAM Optimization & Compression ---
 zram-generator
