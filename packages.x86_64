@@ -92,6 +92,7 @@ tmux
 screen
 ufw
 miniupnpc
+zenity
 docker
 docker-compose
 docker-buildx
