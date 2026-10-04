@@ -1,1 +1,33 @@
+# --- Core System & Kernel ---
+base
+base-devel
+linux-zen
+linux-zen-headers
+networkmanager
+nano
+git
+python
 
+# --- Desktop Environment (Windows-like UI) ---
+plasma-meta
+sddm
+wayland
+
+# --- The Audio Stack (Voicemeeter Alternative) ---
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+qpwgraph
+
+# --- Gaming & Streaming Tools ---
+steam
+lutris
+obs-studio
+vulkan-radeon
+vulkan-intel
+nvidia-utils
+lib32-vulkan-radeon
+lib32-vulkan-intel
+lib32-nvidia-utils
