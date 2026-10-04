@@ -91,6 +91,7 @@ wireguard-tools
 tmux
 screen
 ufw
+miniupnpc
 docker
 docker-compose
 docker-buildx
