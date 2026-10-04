@@ -15,4 +15,5 @@ pacman_conf="pacman.conf"
 file_permissions=(
   ["/usr/local/bin/smart-proton-update.sh"]="0:0:755"
   ["/etc/skel/.config/autostart-scripts/set-wallpaper.sh"]="0:0:755"
+  ["/usr/local/bin/init-gaming-env.sh"]="0:0:755"
 )
