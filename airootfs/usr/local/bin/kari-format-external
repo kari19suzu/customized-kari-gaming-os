@@ -1,0 +1,37 @@
+#!/bin/bash
+# On-Demand External Drive Formatter & Btrfs/Zstd Setup Tool
+
+echo "=== Connected Storage Devices ==="
+lsblk -d -o NAME,SIZE,MODEL,TRAN | grep -E "usb|sata|nvme"
+echo "================================="
+
+read -p "Enter the target drive identifier to format (e.g., sdb, sdc): " TARGET
+
+if [ -z "$TARGET" ]; then
+    echo "Aborted: No drive specified."
+    exit 1
+fi
+
+TARGET_DEV="/dev/$TARGET"
+
+if [ ! -b "$TARGET_DEV" ]; then
+    echo "Error: $TARGET_DEV is not a valid block device."
+    exit 1
+fi
+
+echo ""
+echo "WARNING: You are about to completely wipe $TARGET_DEV!"
+read -p "Type 'FORMAT' in all caps to proceed: " CONFIRM
+
+if [ "$CONFIRM" != "FORMAT" ]; then
+    echo "Aborted: Confirmation did not match. No changes made."
+    exit 1
+fi
+
+echo "[+] Unmounting $TARGET_DEV if currently mounted..."
+sudo umount ${TARGET_DEV}* 2>/dev/null
+
+echo "[+] Formatting $TARGET_DEV with Btrfs and zstd compression..."
+sudo mkfs.btrfs -f -L "ExternalStorage" "$TARGET_DEV"
+
+echo "[+] Done! The drive is now formatted to Btrfs and ready for compressed storage."
