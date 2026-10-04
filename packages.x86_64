@@ -9,6 +9,7 @@ git
 python
 grub
 syslinux
+
 # --- Desktop Environment (Windows-like UI) ---
 plasma-meta
 sddm
@@ -45,6 +46,17 @@ lib32-nvidia-utils
 wine-staging
 winetricks
 noto-fonts-cjk
+
+# Bluetooth Stack (for wireless controllers)
+bluez
+bluez-utils
+
+# Controller Permissions & Udev Rules
+steam-devices
+
+# Testing & Calibration Utilities
+joystick
+jstest-gtk
 
 # --- Firmware & Missing Core Dependencies ---
 linux-firmware
