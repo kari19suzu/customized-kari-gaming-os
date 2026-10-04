@@ -1,0 +1,47 @@
+#!/bin/bash
+# Internal Drive Btrfs Zstd Pre-Installation Formatter
+
+echo "=== Available Internal Drives ==="
+lsblk -d -o NAME,SIZE,MODEL,TRAN | grep -E "sata|nvme"
+echo "================================="
+
+read -p "Enter your target MAIN drive identifier (e.g., nvme0n1, sda): " TARGET
+
+if [ -z "$TARGET" ]; then
+    echo "Aborted: No drive specified."
+    exit 1
+fi
+
+TARGET_DEV="/dev/$TARGET"
+
+if [ ! -b "$TARGET_DEV" ]; then
+    echo "Error: $TARGET_DEV is not a valid block device."
+    exit 1
+fi
+
+echo ""
+echo "WARNING: This will completely wipe the main drive $TARGET_DEV!"
+read -p "Type 'INSTALL' in all caps to proceed: " CONFIRM
+
+if [ "$CONFIRM" != "INSTALL" ]; then
+    echo "Aborted: Confirmation did not match."
+    exit 1
+fi
+
+echo "[+] Formatting $TARGET_DEV with Btrfs and real-time zstd compression..."
+# If it's an NVMe drive, partitions look like nvme0n1p1. For SATA, sda1. 
+# We'll format the whole disk or a partition depending on your layout.
+# Assuming a clean partition layout (e.g., EFI partition + Btrfs root partition):
+
+# For this example, let's assume partition 2 is your root partition:
+ROOT_PART="${TARGET_DEV}p2" # or ${TARGET_DEV}2 for SATA
+
+echo "[+] Formatting root partition to Btrfs..."
+sudo mkfs.btrfs -f -L "KarisGamingOS" "$ROOT_PART"
+
+echo "[+] Mounting and creating subvolumes with zstd compression..."
+sudo mount -o compress=zstd:3 "$ROOT_PART" /mnt
+sudo btrfs subvolume create /mnt/@
+sudo btrfs subvolume create /mnt/@home
+
+echo "[+] Drive is fully prepped! /mnt is ready for pacstrap."
