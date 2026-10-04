@@ -45,6 +45,10 @@ lib32-nvidia-utils
 # --- Standalone Game Support (RPG Maker, WolfRPG, Unity, Visual Novels) ---
 wine-staging
 winetricks
+protontricks
+lib32-gnutls
+lib32-pipewire
+lib32-libpulse
 noto-fonts-cjk
 
 # --- Controller Stack & Bluetooth ---
@@ -53,8 +57,9 @@ bluez-utils
 steam-devices
 joystick
 
-# --- Android Compatibility Layer ---
+# --- Android Compatibility Layer & Flatpak Ecosystem ---
 waydroid
+flatpak
 
 # --- Firmware & Missing Core Dependencies ---
 linux-firmware
