@@ -9,6 +9,7 @@ git
 python
 grub
 syslinux
+efibootmgr
 
 # --- Desktop Environment (Windows-like UI) ---
 plasma-meta
@@ -87,7 +88,7 @@ tcpdump
 openbsd-netcat
 wireguard-tools
 
-# --- Server Hosting & Management Stack ---
+# --- Server Hosting, Automation & File Transfer Stack ---
 tmux
 screen
 ufw
@@ -96,6 +97,15 @@ zenity
 docker
 docker-compose
 docker-buildx
+python-miniupnpc
+python-requests
+python-beautifulsoup4
+python-psutil
+python-pyftpdlib
+lftp
+filezilla
+nodejs
+npm
 
 # --- RAM Optimization & Compression ---
 zram-generator
