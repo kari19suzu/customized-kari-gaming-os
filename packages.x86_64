@@ -97,3 +97,6 @@ docker-buildx
 
 # --- RAM Optimization & Compression ---
 zram-generator
+
+# --- Local Network & VR Discovery ---
+avahi
