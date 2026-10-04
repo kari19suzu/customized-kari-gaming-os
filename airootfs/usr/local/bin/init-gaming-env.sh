@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Automated First-Boot Setup for HoYoverse, PGR, and Gaming Tooling
+# Automated First-Boot Setup for Gaming, VR Discovery, and Tooling
 
 LOCKFILE="/var/lib/custom-os-initialized.flag"
 
@@ -15,12 +15,13 @@ echo "[+] Installing Heroic Games Launcher & ProtonUp-Qt via Flatpak..."
 flatpak install -y flathub com.heroicgameslauncher.hgl
 flatpak install -y flathub net.davidotek.pupgui2
 
-echo "[+] Enabling system services..."
+echo "[+] Enabling system and VR discovery services..."
 systemctl enable --now bluetooth.service
 systemctl enable --now waydroid-container.service
+systemctl enable --now avahi-daemon.service
 
 # Create the lock file so this script never runs again on future boots
 mkdir -p "$(dirname "$LOCKFILE")"
 touch "$LOCKFILE"
 
-echo "[+] Gaming environment initialization complete!"
+echo "[+] Gaming and VR environment initialization complete!"
