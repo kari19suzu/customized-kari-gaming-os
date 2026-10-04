@@ -53,10 +53,10 @@ bluez-utils
 
 # Controller Permissions & Udev Rules
 steam-devices
+steam-utils
 
 # Testing & Calibration Utilities
 joystick
-jstest-gtk
 
 # --- Firmware & Missing Core Dependencies ---
 linux-firmware
