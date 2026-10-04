@@ -8,7 +8,7 @@ nano
 git
 python
 grub
-
+syslinux
 # --- Desktop Environment (Windows-like UI) ---
 plasma-meta
 sddm
