@@ -3,27 +3,25 @@ name: Build Custom Gaming OS ISO
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch: # Allows manual triggers from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build-iso:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    container:
+      image: archlinux:latest # Runs the job inside a native Arch environment
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Archiso Dependencies
+      - name: Install Archiso and Build Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y archiso squashfs-tools
+          pacman -Syu --noconfirm archiso squashfs-tools base-devel git
 
       - name: Build Custom Arch ISO
         run: |
-          # Runs the build script pointing to your custom profile directory
-          sudo mkarchiso -v -w ./work -o ./out ./
+          mkarchiso -v -w ./work -o ./out ./
         shell: bash
 
       - name: Verify Built ISO
@@ -37,4 +35,4 @@ jobs:
           name: Custom-Arch-Gaming-OS
           path: out/*.iso
           retention-days: 7
-          compression-level: 0 # 0 skips compression for already-compressed ISOs, speeding up upload
+          compression-level: 0
