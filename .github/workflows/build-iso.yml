@@ -23,7 +23,7 @@ jobs:
       - name: Install Archiso Builder Tools
         run: |
           pacman -Syu --noconfirm
-          pacman -S --noconfirm archiso
+          pacman -S --noconfirm archiso grub dosfstools
 
       - name: Build the OS Image
         run: |
