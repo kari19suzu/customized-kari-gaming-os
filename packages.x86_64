@@ -47,11 +47,14 @@ wine-staging
 winetricks
 noto-fonts-cjk
 
-# Bluetooth Stack (for wireless controllers)
+# --- Controller Stack & Bluetooth ---
 bluez
 bluez-utils
 steam-devices
 joystick
+
+# --- Android Compatibility Layer ---
+waydroid
 
 # --- Firmware & Missing Core Dependencies ---
 linux-firmware
@@ -70,9 +73,10 @@ lib32-gamemode
 mangohud
 lib32-mangohud
 
-# --- Network Management & Diagnostics ---
+# --- Network Management, Diagnostics & Region-Free VPN ---
 nmap
 wireshark-qt
 aircrack-ng
 tcpdump
 openbsd-netcat
+wireguard-tools
