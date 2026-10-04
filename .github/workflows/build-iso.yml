@@ -1,56 +1,40 @@
-name: Build Custom Arch ISO
+name: Build Custom Gaming OS ISO
 
 on:
-  workflow_dispatch: # Restricted to manual triggers only
-
-permissions:
-  contents: write # Required to create tags and publish GitHub releases
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: # Allows manual triggers from the Actions tab
 
 jobs:
-  build-arch-iso:
+  build-iso:
     runs-on: ubuntu-latest
-    
-    # We run the build inside a clean, official Arch Linux container
-    container:
-      image: archlinux:latest
-      options: --privileged
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Install Archiso Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y archiso squashfs-tools
+
+      - name: Build Custom Arch ISO
+        run: |
+          # Runs the build script pointing to your custom profile directory
+          sudo mkarchiso -v -w ./work -o ./out ./
+        shell: bash
+
+      - name: Verify Built ISO
+        run: |
+          ls -lh out/
+        shell: bash
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
         with:
-          fetch-depth: 0 # Required to accurately read previous git tags for versioning
-
-      - name: Install Archiso Builder Tools
-        run: |
-          pacman -Syu --noconfirm
-          pacman -S --noconfirm archiso grub dosfstools git
-
-      - name: Build the OS Image
-        run: |
-          # Run the mkarchiso command using the files in this repository
-          mkarchiso -v -w /tmp/workdir -o /tmp/outdir .
-
-      - name: Determine Next Version
-        id: get_version
-        run: |
-          git fetch --tags || true
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0")
-          NUM=${LATEST_TAG#v}
-          if ! [[ "$NUM" =~ ^[0-9]+$ ]]; then
-            NUM=0
-          fi
-          NEXT_NUM=$((NUM + 1))
-          NEXT_TAG="v$NEXT_NUM"
-          echo "next_tag=$NEXT_TAG" >> $GITHUB_OUTPUT
-          echo "Generated next version tag: $NEXT_TAG"
-
-      - name: Create Release and Upload ISO
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.get_version.outputs.next_tag }}
-          name: "Custom Gaming OS Release ${{ steps.get_version.outputs.next_tag }}"
-          files: /tmp/outdir/*.iso
-          body: "Automated build of the custom Arch Linux gaming and private server distribution."
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: Custom-Arch-Gaming-OS
+          path: out/*.iso
+          retention-days: 7
+          compression-level: 0 # 0 skips compression for already-compressed ISOs, speeding up upload
