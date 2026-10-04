@@ -17,7 +17,12 @@ jobs:
       - name: Install Archiso and Build Dependencies
         run: |
           pacman -Syu --noconfirm archiso squashfs-tools base-devel git grub
-
+      
+      - name: Ensure Custom Scripts are Executable
+        run: |
+          chmod +x airootfs/usr/local/bin/*
+        shell: bash
+      
       - name: Build Custom Arch ISO
         run: |
           mkarchiso -v -w ./work -o ./out ./
