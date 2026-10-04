@@ -44,7 +44,6 @@ lib32-nvidia-utils
 # --- Standalone Game Support (RPG Maker, WolfRPG, Unity, Visual Novels) ---
 wine-staging
 winetricks
-bottles
 noto-fonts-cjk
 
 # --- Firmware & Missing Core Dependencies ---
@@ -69,4 +68,4 @@ nmap
 wireshark-qt
 aircrack-ng
 tcpdump
-gnu-netcat
+openbsd-netcat
