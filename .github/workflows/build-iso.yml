@@ -1,11 +1,10 @@
 name: Build Custom Arch ISO
 
-# This tells GitHub to build the ISO every time you edit a file, 
-# and also gives you a button to trigger it manually.
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch: # Restricted to manual triggers only
+
+permissions:
+  contents: write # Required to create tags and publish GitHub releases
 
 jobs:
   build-arch-iso:
@@ -19,20 +18,39 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required to accurately read previous git tags for versioning
 
       - name: Install Archiso Builder Tools
         run: |
           pacman -Syu --noconfirm
-          pacman -S --noconfirm archiso grub dosfstools
+          pacman -S --noconfirm archiso grub dosfstools git
 
       - name: Build the OS Image
         run: |
           # Run the mkarchiso command using the files in this repository
           mkarchiso -v -w /tmp/workdir -o /tmp/outdir .
 
-      - name: Upload the Finished ISO File
-        uses: actions/upload-artifact@v4
+      - name: Determine Next Version
+        id: get_version
+        run: |
+          git fetch --tags || true
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0")
+          NUM=${LATEST_TAG#v}
+          if ! [[ "$NUM" =~ ^[0-9]+$ ]]; then
+            NUM=0
+          fi
+          NEXT_NUM=$((NUM + 1))
+          NEXT_TAG="v$NEXT_NUM"
+          echo "next_tag=$NEXT_TAG" >> $GITHUB_OUTPUT
+          echo "Generated next version tag: $NEXT_TAG"
+
+      - name: Create Release and Upload ISO
+        uses: softprops/action-gh-release@v2
         with:
-          name: Custom-Arch-Gaming-OS
-          path: /tmp/outdir/*.iso
-          if-no-files-found: error
+          tag_name: ${{ steps.get_version.outputs.next_tag }}
+          name: "Custom Gaming OS Release ${{ steps.get_version.outputs.next_tag }}"
+          files: /tmp/outdir/*.iso
+          body: "Automated build of the custom Arch Linux gaming and private server distribution."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
