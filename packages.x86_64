@@ -10,6 +10,7 @@ python
 grub
 syslinux
 efibootmgr
+btrfs-progs
 
 # --- Desktop Environment & Integration ---
 plasma-meta
