@@ -50,12 +50,7 @@ noto-fonts-cjk
 # Bluetooth Stack (for wireless controllers)
 bluez
 bluez-utils
-
-# Controller Permissions & Udev Rules
 steam-devices
-steam-utils
-
-# Testing & Calibration Utilities
 joystick
 
 # --- Firmware & Missing Core Dependencies ---
