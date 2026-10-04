@@ -18,7 +18,7 @@ sddm
 wayland
 xdg-utils
 
-# --- The Audio Stack (Voicemeeter Alternative) ---
+# --- The Audio Stack (Voicemeeter Alternative & Pro Audio) ---
 pipewire
 pipewire-alsa
 pipewire-pulse
@@ -26,6 +26,8 @@ pipewire-jack
 wireplumber
 qpwgraph
 lib32-alsa-plugins
+realtime-privileges
+lv2-plugins
 
 # --- AMD Hardware Specifics ---
 amd-ucode
@@ -54,6 +56,8 @@ lib32-gnutls
 lib32-pipewire
 lib32-libpulse
 noto-fonts-cjk
+lib32-fontconfig
+lib32-freetype2
 
 # --- Controller Stack & Bluetooth ---
 bluez
