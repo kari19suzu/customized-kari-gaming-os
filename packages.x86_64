@@ -85,3 +85,11 @@ aircrack-ng
 tcpdump
 openbsd-netcat
 wireguard-tools
+
+# --- Server Hosting & Management Stack ---
+tmux
+screen
+ufw
+docker
+docker-compose
+docker-buildx
