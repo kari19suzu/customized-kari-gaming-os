@@ -11,10 +11,11 @@ grub
 syslinux
 efibootmgr
 
-# --- Desktop Environment (Windows-like UI) ---
+# --- Desktop Environment & Integration ---
 plasma-meta
 sddm
 wayland
+xdg-utils
 
 # --- The Audio Stack (Voicemeeter Alternative) ---
 pipewire
@@ -23,6 +24,7 @@ pipewire-pulse
 pipewire-jack
 wireplumber
 qpwgraph
+lib32-alsa-plugins
 
 # --- AMD Hardware Specifics ---
 amd-ucode
@@ -67,11 +69,13 @@ linux-firmware
 vulkan-icd-loader
 lib32-vulkan-icd-loader
 
-# --- Extractors (Required by Lutris/Winetricks) ---
+# --- Extractors & System Utilities ---
 unzip
 p7zip
 curl
 wget
+rsync
+btop
 
 # --- Gaming Optimizations ---
 gamemode
