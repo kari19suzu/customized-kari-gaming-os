@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: archlinux:latest
+      options: --privileged # <-- This allows mkarchiso to perform mount operations inside the container
 
     steps:
       - name: Checkout Repository
