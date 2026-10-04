@@ -1,0 +1,11 @@
+[Unit]
+Description=Smart GE-Proton & Translation Layer Auto-Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/smart-proton-update.sh
+
+[Install]
+WantedBy=default.target
