@@ -1,4 +1,4 @@
-name: Build Custom Gaming OS ISO
+name: "Build \"Kari's\" Gaming OS ISO"
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
   build-iso:
     runs-on: ubuntu-latest
     container:
-      image: archlinux:latest # Runs the job inside a native Arch environment
+      image: archlinux:latest
 
     steps:
       - name: Checkout Repository
@@ -17,7 +17,7 @@ jobs:
 
       - name: Install Archiso and Build Dependencies
         run: |
-          pacman -Syu --noconfirm archiso squashfs-tools base-devel git
+          pacman -Syu --noconfirm archiso squashfs-tools base-devel git grub
 
       - name: Build Custom Arch ISO
         run: |
