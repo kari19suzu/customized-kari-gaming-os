@@ -1,0 +1,38 @@
+name: Build Custom Arch ISO
+
+# This tells GitHub to build the ISO every time you edit a file, 
+# and also gives you a button to trigger it manually.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-arch-iso:
+    runs-on: ubuntu-latest
+    
+    # We run the build inside a clean, official Arch Linux container
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Archiso Builder Tools
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm archiso
+
+      - name: Build the OS Image
+        run: |
+          # Run the mkarchiso command using the files in this repository
+          mkarchiso -v -w /tmp/workdir -o /tmp/outdir .
+
+      - name: Upload the Finished ISO File
+        uses: actions/upload-artifact@v4
+        with:
+          name: Custom-Arch-Gaming-OS
+          path: /tmp/outdir/*.iso
+          if-no-files-found: error
