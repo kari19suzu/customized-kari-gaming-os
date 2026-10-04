@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Custom OS identity and boot configuration
 
-iso_name="custom-gaming-os"
+iso_name="Karis-customgaming-os"
 iso_label="CUSTOM_OS_$(date +%Y%m)"
-iso_publisher="Custom Build"
+iso_publisher="Kari"
 iso_application="Gaming and Streaming Workstation"
 iso_version="1.0"
 install_dir="arch"
