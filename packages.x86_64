@@ -1,4 +1,4 @@
-# --- Core System & Kernel ---
+# --- Core System, ISO Boot & Kernel ---
 base
 base-devel
 linux-zen
@@ -10,6 +10,9 @@ python
 grub
 efibootmgr
 syslinux
+memtest86+
+memtest86+-efi
+edk2-shell
 btrfs-progs
 dosfstools
 dkms
@@ -134,13 +137,11 @@ lib32-libx11
 lib32-libxft
 
 # --- Legacy Game Audio & Realtime Script Hooks ---
-lib32-openal
 lib32-libvorbis
 python-dbus
 
 # --- OpenXR & VR Runtime Stack ---
 openxr
-lib32-openxr
 
 # --- Drawing Tablet Support (Plasma Wayland) ---
 libwacom
@@ -155,12 +156,6 @@ iptables-nft
 v4l2loopback-dkms
 v4l2loopback-utils
 
-# --- 32-Bit Media & VN Cutscene Playback ---
-lib32-gstreamer
-lib32-gst-plugins-base
-lib32-gst-plugins-good
-lib32-mpg123
-
 # --- Audio Rack & DSP Host ---
 carla
 
@@ -169,6 +164,5 @@ android-tools
 
 # --- Core Gamepad & System Fonts ---
 sdl2
-lib32-sdl2
 vulkan-tools
 ttf-liberation
