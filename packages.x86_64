@@ -11,12 +11,16 @@ grub
 syslinux
 efibootmgr
 btrfs-progs
+dosfstools
+dkms
 
 # --- Desktop Environment & Integration ---
 plasma-meta
 sddm
 wayland
 xdg-utils
+xdg-desktop-portal
+xdg-desktop-portal-kde
 
 # --- The Audio Stack (Voicemeeter Alternative & Pro Audio) ---
 pipewire
@@ -122,3 +126,55 @@ zram-generator
 
 # --- Local Network & VR Discovery ---
 avahi
+
+# --- NVIDIA Kernel Modules ---
+nvidia-dkms
+
+# --- Japanese Input & Text Rendering (VNs / RPG Maker) ---
+fcitx5
+fcitx5-mozc
+fcitx5-configtool
+fcitx5-gtk
+fcitx5-qt
+lib32-libx11
+lib32-libxft
+
+# --- Legacy Game Audio & Realtime Script Hooks ---
+lib32-openal
+lib32-libvorbis
+dbus-python
+
+# --- OpenXR & VR Runtime Stack ---
+openxr-loader
+lib32-openxr-loader
+
+# --- Drawing Tablet Support (Plasma Wayland) ---
+libwacom
+kcm-wacomtablet
+
+# --- Waydroid Container Networking ---
+dnsmasq
+lxc
+iptables-nft
+
+# --- Virtual Camera (OBS / Discord Webcams) ---
+v4l2loopback-dkms
+v4l2loopback-utils
+
+# --- 32-Bit Media & VN Cutscene Playback ---
+lib32-gstreamer
+lib32-gst-plugins-base
+lib32-gst-plugins-good
+lib32-mpg123
+
+# --- Audio Rack & DSP Host ---
+carla
+
+# --- Quest & Android Developer Tools ---
+android-tools
+
+# --- Core Gamepad & System Fonts ---
+sdl2
+lib32-sdl2
+vulkan-tools
+ttf-liberation
