@@ -8,8 +8,8 @@ nano
 git
 python
 grub
-syslinux
 efibootmgr
+syslinux
 btrfs-progs
 dosfstools
 dkms
@@ -31,7 +31,7 @@ wireplumber
 qpwgraph
 lib32-alsa-plugins
 realtime-privileges
-lv2-plugins
+lsp-plugins-lv2
 
 # --- AMD Hardware Specifics ---
 amd-ucode
@@ -65,7 +65,6 @@ lib32-freetype2
 bluez
 bluez-utils
 steam-devices
-joystick
 
 # --- Android Compatibility Layer & Flatpak Ecosystem ---
 waydroid
@@ -78,7 +77,7 @@ lib32-vulkan-icd-loader
 
 # --- Extractors & System Utilities ---
 unzip
-p7zip
+7zip
 curl
 wget
 rsync
@@ -137,15 +136,15 @@ lib32-libxft
 # --- Legacy Game Audio & Realtime Script Hooks ---
 lib32-openal
 lib32-libvorbis
-dbus-python
+python-dbus
 
 # --- OpenXR & VR Runtime Stack ---
-openxr-loader
-lib32-openxr-loader
+openxr
+lib32-openxr
 
 # --- Drawing Tablet Support (Plasma Wayland) ---
 libwacom
-kcm-wacomtablet
+wacomtablet
 
 # --- Waydroid Container Networking ---
 dnsmasq
