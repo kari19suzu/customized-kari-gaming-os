@@ -47,10 +47,8 @@ lutris
 obs-studio
 vulkan-radeon
 vulkan-intel
-nvidia-utils
 lib32-vulkan-radeon
 lib32-vulkan-intel
-lib32-nvidia-utils
 
 # --- Standalone Game Support (RPG Maker, WolfRPG, Unity, Visual Novels) ---
 wine-staging
@@ -126,9 +124,6 @@ zram-generator
 
 # --- Local Network & VR Discovery ---
 avahi
-
-# --- NVIDIA Kernel Modules ---
-nvidia-dkms
 
 # --- Japanese Input & Text Rendering (VNs / RPG Maker) ---
 fcitx5
